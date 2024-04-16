@@ -1,10 +1,14 @@
-
-<div class="home">
-  <app-sidebar/>
-  <div class="derecha">
-    <app-header class="barra-superior"/>
-    <div class="centro">
-      <app-home/>
+@if (isLogin) {
+  <router-outlet />
+} @else {
+  <div class="home">
+    <app-sidebar />
+    <div class="derecha">
+      <app-header class="barra-superior" />
+      <div class="centro">
+        <app-home />
+        <router-outlet />
+      </div>
     </div>
   </div>
-</div>
+}
