@@ -1,0 +1,54 @@
+before_script:
+  - source /etc/environment
+
+stages:
+  - build_docker
+  - deploy
+  - cleanup
+
+variables:
+  DOCKER_IMAGE_NAME: "ocfe"
+  DOCKER_CONTAINER_NAME: "ocfe"
+  DOCKERFILE_NAME: "Dockerfile"
+
+  
+build_docker:
+  stage: build_docker
+  tags:
+    - $CI_COMMIT_BRANCH
+  script:
+    - echo "Step build docker image"
+    - rm -f IMAGE_TAG_OCFE.txt
+    - export IMAGE_TAG_OCFE=$CI_COMMIT_BRANCH-$(date +%Y%m%d%H%M%S)-$(uuidgen)
+    - echo $IMAGE_TAG_OCFE > IMAGE_TAG_OCFE.txt
+    - echo "TAG " $IMAGE_TAG_OCFE
+    - docker build -t $DOCKER_IMAGE_NAME:$IMAGE_TAG_OCFE -f $DOCKERFILE_NAME .
+  artifacts:
+    paths:
+      - IMAGE_TAG_OCFE.txt
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "test" || $CI_COMMIT_BRANCH == "prod"'
+
+deploy:
+  stage: deploy
+  tags:
+    - $CI_COMMIT_BRANCH
+  script:
+    - export IMAGE_TAG_OCFE=$(cat IMAGE_TAG_OCFE.txt)
+    - echo "TAG " $IMAGE_TAG_OCFE
+    - docker stop $DOCKER_CONTAINER_NAME || true
+    - docker rm -f $DOCKER_CONTAINER_NAME || true
+    - docker run -d --rm --name $DOCKER_CONTAINER_NAME -p 4201:4201 $DOCKER_IMAGE_NAME:$IMAGE_TAG_OCFE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "test" || $CI_COMMIT_BRANCH == "prod"'
+  dependencies:
+    - build_docker
+  when: manual
+
+cleanup:
+  stage: cleanup
+  script:
+    - rm IMAGE_TAG_OCFE.txt
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_COMMIT_BRANCH == "test" || $CI_COMMIT_BRANCH == "prod"'
+        

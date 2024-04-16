@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<div class="contenedor-buscador">
+  <h3>Buscador</h3>
+  <div class="contenedor-inputs">
+    <mat-form-field class="input periodo">
+      <mat-label>Período</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field class="input estado">
+      <mat-label>Estado</mat-label>
+      <mat-select>
+        @for (estado of estados; track estado) {
+          <mat-option [value]="estado.value">{{estado.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input cliente">
+      <mat-label>Cliente</mat-label>
+      <mat-select>
+        @for (cliente of clientes; track cliente) {
+          <mat-option [value]="cliente.value">{{cliente.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="input proyecto">
+      <mat-label>Proyecto</mat-label>
+      <mat-select>
+        @for (proyecto of proyectos; track proyecto) {
+          <mat-option [value]="proyecto.value">{{proyecto.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="contenedor-btns">
+    
+  </div>
+  <div class="btns">
+    <button class="restaurar" mat-button>Restaurar</button>
+    <div class="search-bar">
+      <span class="material-symbols-outlined">
+        search
+        </span>
+      <input type="text" placeholder="Buscar" [(ngModel)]="searchQuery" (input)="onSearch()">
+    </div>
+  </div>
+
+
+</div>

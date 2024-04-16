@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --color-primary: #152663;
+  --color-secondary: #15539b;
+  --color-tertiary: #ffce00;
+  --color-quaternary: #6777EF;
+  --color-error: #960202;
+  --color-green: #28A745;
+  --color-card-header: #f7f7f7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

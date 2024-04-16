@@ -1,0 +1,125 @@
+.cardHeader {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem;
+  background: var(--color-card-header);
+  border-bottom: 1px solid #ccc;
+
+  h2 {
+    padding: 0;
+    margin: 0;
+    text-wrap: balance;
+  }
+}
+
+.iconCerrar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  background: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover {
+    color: var(--color-primary);
+    background-color: var(--color-card-header);
+    transform: scale(1.01) rotate(180deg);
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, .1);
+  }
+
+}
+
+.centrar {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrarVertical {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursorPointer {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+.noEvents {
+  pointer-events: none;
+}
+
+.desabled {
+  pointer-events: none;
+  // color: 
+  color: #aeb1b4 !important;
+}
+
+.accesorios {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  display: flex;
+
+  i {
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: block;
+    padding: .1rem .5rem;
+    transition: all .2s ease;
+  }
+
+  i:hover {
+    transform: scale(1.1);
+    color: var(--color-secondary);
+  }
+}
+
+.noEvents {
+  pointer-events: none !important;
+}
+
+.desabled {
+  pointer-events: none;
+  color: #aeb1b4 !important;
+}
+
+
+// BOX SEARCH STYLES
+.searchInput input {
+  width: 100%;
+  height: auto;
+  color: #444 !important;
+  border-radius: .3rem;
+  padding: .5rem;
+  border: 1px solid #ccc;
+}
+
+.searchInput input:hover,
+.searchInput input:focus {
+  outline: none;
+}
+
+.searchInput input::placeholder {
+  color: #444 !important;
+}
+
+.textRight{
+  text-align: right;
+}

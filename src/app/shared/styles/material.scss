@@ -1,0 +1,20 @@
+mat-form-field, mat-form-field .mat-form-field-wrapper, mat-form-field .mat-form-field-wrapper .mat-form-field-flex, mat-form-field .mat-form-field-wrapper .mat-form-field-infix, mat-form-field .mat-form-field-wrapper .mat-form-field-infix .mat-input-element {
+  width: 100%;
+}
+
+mat-tab{
+  width: 100%;
+}
+
+// input {
+//   width: 100%;
+// }
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface  {
+  background-color: var(--color-primary) !important;
+  font-size: 3rem !important;
+}
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: #fefefe !important;
+}
