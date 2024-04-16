@@ -1,14 +1,24 @@
-@if (isLogin) {
+<div *ngIf="isLogin; else otroContenido">
   <router-outlet />
-} @else {
+</div>
+
+<ng-template #otroContenido>
+
   <div class="home">
+
     <app-sidebar />
+
     <div class="derecha">
+
       <app-header class="barra-superior" />
+
       <div class="centro">
+
         <app-home />
         <router-outlet />
+
       </div>
     </div>
   </div>
-}
+
+</ng-template>

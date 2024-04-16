@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { AngularModule, MaterialModule } from './shared/modules';
 import { StoreModule } from '@ngrx/store';
@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HeaderComponent } from "./loyouts/header/header.component";
 import { BuscadorComponent } from "./loyouts/buscador/buscador.component";
 import { HomeComponent } from "./panel/home/home.component";
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -28,19 +29,16 @@ export class AppComponent implements OnInit {
 
   title = 'otros-costos';
 
-  isLogin = true;
+  isLogin: boolean = true;
 
-  constructor() {}
+  private readonly _router: Router = inject(Router);
 
   ngOnInit() {
-    const ruta = window.location.pathname;
-    console.log(ruta);
-    if (ruta === '/login' || ruta === '/') {
-      this.isLogin = true;
-    } else{
-      this.isLogin = false;
-    }
+    this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLogin = event.url === '/login' || event.url === '/';
+      }
+    });
   }
-
 
 }
