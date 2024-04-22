@@ -115,7 +115,7 @@ export class BuscadorComponent implements OnInit {
     const month = normalizedMonthAndYear.month().toString().padStart(2, '0');
     const year = normalizedMonthAndYear.year();
     const date = `${month}/${year}`;
-    this.buscadorForm.get('date')?.setValue(date);
+    this.buscadorForm.get('date')?.setValue(new Date(`${year}/${month}`));
     datepicker.close();
   }
 
