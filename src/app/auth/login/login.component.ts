@@ -1,12 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { AngularModule, MaterialModule } from '../../shared/modules';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 //import { Router } from 'express';
 import { LoginService } from './login.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario.model';
-import { MensajeGlobal } from '../../helpers/mensaje-global';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,11 @@ import { MensajeGlobal } from '../../helpers/mensaje-global';
     AngularModule,
     MaterialModule
   ],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent  {
+
+
 
   ingresarForm!: FormGroup;
 
@@ -29,12 +33,9 @@ export class LoginComponent  {
 
    private _router = inject(Router);
   private readonly _loginService = inject(LoginService);
-  private readonly _m =inject(MensajeGlobal);
 
-  constructor (
-    ){
 
-  }
+  constructor (private _snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.initIngresarForm();
@@ -44,7 +45,7 @@ export class LoginComponent  {
 
   initIngresarForm(): void {
     this.ingresarForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      userName: new FormControl('', [Validators.required, Validators.maxLength(20), this.letrasValidator()]),
       password: new FormControl('', [Validators.required]),
     });
   }
@@ -89,18 +90,22 @@ export class LoginComponent  {
         console.log(user);
         this.loaderBtn = true;
           localStorage.setItem('token', user.token || '{}');
+          localStorage.setItem('usuario',user.usuario || '{}');
           this._router.navigate(['/home'])
           console.log(localStorage.getItem('token'));
+      },
       error: (err: any) => {
-        console.log(err);
+        this._snackBar.open('credenciales incorrectas'
+          , 'Cerrar', {
+          duration: 5000,
+          panelClass: ['error-snackbar'],
+          verticalPosition: 'top'
+      });
         this.loaderBtn = false;
-        this._m.error(err);
-        this.ingresarForm.reset();
         this.ingresarForm.invalid;
         this.ingresarForm.markAllAsTouched();
 
 
-      }
       }
     })
   }
@@ -110,7 +115,17 @@ export class LoginComponent  {
     this._unsubscribeAll.complete();
   }
 
+   letrasValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null;
+      }
+      const tieneCaracteresEspeciales = !/^[a-zA-Z]*$/.test(value);
+      return tieneCaracteresEspeciales ? { 'caracteresEspeciales': true } : null;
+    };
 
+  }
 
 
 }

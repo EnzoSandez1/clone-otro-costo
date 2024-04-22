@@ -11,10 +11,14 @@ mat-tab{
 // }
 
 .mat-mdc-snack-bar-container .mdc-snackbar__surface  {
-  background-color: var(--color-primary) !important;
+ //background-color: var(--color-primary) !important;
+  background-color: red !important;
   font-size: 3rem !important;
 }
 
 .mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
   color: #fefefe !important;
+//}
+//.mat-snack-bar-container .error-snackbar {
+// color: red !important;
 }

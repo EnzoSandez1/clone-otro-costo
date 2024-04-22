@@ -1,7 +1,10 @@
 <div class="login">
   <div class="childLogin p-4 Center">
     <div>
-      <label class="texto">¡Hola!</label>
+      <div class="texto">
+        <p>¡Hola!</p>
+        <p><samp>Te damos la bienvenida</samp></p>
+      </div>
 
     </div>
 
@@ -14,11 +17,10 @@
         <mat-error
           *ngIf="ingresarForm.get('userName')?.errors && ingresarForm.get('userName')?.invalid && (ingresarForm.get('userName')?.dirty || ingresarForm.get('userName')?.touched)">
           <span *ngIf="ingresarForm.get('userName')?.errors?.['required']">El usuario es obligatorio</span>
-          <span *ngIf="ingresarForm.get('userName')?.errors?.['minlength']">El usuario debe tener al menos 3
-            caracteres</span>
-          <span *ngIf="ingresarForm.get('userName')?.errors?.['maxlength']">El usuario no puede tener más de 50
-            caracteres</span>
+          <span *ngIf="ingresarForm.get('userName')?.errors?.['maxlength']">El usuario no puede tener más de 20 caracteres</span>
+          <span *ngIf="ingresarForm.get('userName')?.errors?.['caracteresEspeciales']">El usuario solo puede contener letras</span>
         </mat-error>
+
 
       </mat-form-field>
 
@@ -45,7 +47,7 @@
     @if(ingresarForm.valid){
     <div>
       <div class="botones">
-        <button mat-button type="submit" class="mat-button-block" (click)="validarForm()">
+        <button mat-button type="submit" class="mat-button-block" (click)="validarForm()" #boton >
           @if (loaderBtn === true){
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Cargando...
           }

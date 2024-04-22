@@ -101,3 +101,10 @@ font-weight: 500;
 .search-bar button:hover {
   background-color: #0056b3;
 }
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}

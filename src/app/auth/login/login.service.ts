@@ -3,7 +3,6 @@ import { Injectable, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 import { Usuario } from '../../models/usuario.model';
-import { MensajeGlobal } from '../../helpers/mensaje-global';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,6 @@ export class LoginService {
 
   private readonly _http = inject(HttpClient);
   private usuario: BehaviorSubject<any> = new BehaviorSubject(null);
-  private readonly _m =inject(MensajeGlobal);
 
 
   constructor() {}
@@ -21,7 +19,7 @@ export class LoginService {
 
 
 
-      return this._http.post<Usuario>(`https://172.20.68.85:8082/api/login`, body)
+      return this._http.post<Usuario>(`http://172.20.68.85:8082/api/login`, body)
         .pipe(tap((user: Usuario) => {
           this.usuario.next(user);
           return user;
@@ -31,5 +29,10 @@ export class LoginService {
 
           }));
     }
+
+    isLoggedIn(): boolean {
+      return !!localStorage.getItem('token');
+    }
+
 }
 

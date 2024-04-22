@@ -8,7 +8,7 @@
   background-repeat:no-repeat;
   background-position:center;
   background-size:100 auto;
-  background:cover;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,6 @@
     border-radius: 8px;
     border: 0.5px solid black; /* Cambia "black" por el color deseado */
     padding: 3.5vw 4vw; /* Relleno en unidades de viewport width */
-    margin-top: 2vw; /* Margen superior en unidades de viewport width */
     box-sizing: border-box; /* Incluye el borde y el relleno en el ancho y alto total */
     border: 0.5px solid rgba(159, 159, 159, 0.8);
     box-shadow: 2px 2px 5px 0px rgba(204, 10, 45, 0.1);
@@ -59,23 +58,42 @@
 
   };
 }
+
 .texto{
-  text-align: initial;
+  height: 100%;
+
+
 }
-.botongris {
+
+.texto p{
+  font-family: Roboto;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 25.78px;
+  text-align: left;
+  color: #494949;
+}
+
+.texto p samp{
+  font-family: Roboto;
+font-size: 22px;
+font-weight: 300;
+line-height: 25.78px;
+text-align: left;
+
+}
+
+
+.botongris button {
   border-radius: .3rem;
   padding: .5rem 1rem;
   width: 100%;
-  height: auto;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
   background-color:#9f9f9f;
-
-  button {
-    color: #555;
-
-  };
+  color: #555;
 }
 

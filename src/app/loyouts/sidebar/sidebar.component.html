@@ -16,15 +16,15 @@
   </div>
 
   <div class="vinculos">
-    <a class="icono" href="#"><span class="material-symbols-outlined"> home</span><p> Home </p></a>
-    <a class="icono" href="#"><span class="material-symbols-outlined">
+    <a class="icono" routerLink="/home"routerLinkActive="active"><span class="material-symbols-outlined"> home</span><p> Home </p></a>
+    <a class="icono"routerLink="/cargas"routerLinkActive="active"><span class="material-symbols-outlined">
       upload
       </span><p> Cargas </p></a>
-    <a class="icono" href="#"><span class="material-symbols-outlined"> shield_person </span><p> Administración </p></a>
+    <a class="icono" routerLink="/administracion"routerLinkActive="active"><span class="material-symbols-outlined"> shield_person </span><p> Administración </p></a>
   </div>
 
-  <div class="btn-cerrar-sesion">
-    <a href="#"><span class="material-symbols-outlined"> power_settings_new </span><p> Cerrar sesión </p></a>
+  <div class="btn-cerrar-sesion" (click)="logout()">
+    <a class="icono" ><span class="material-symbols-outlined" > power_settings_new </span><p> Cerrar sesión </p></a>
 
 
 

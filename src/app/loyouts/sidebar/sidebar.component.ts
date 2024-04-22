@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularModule, MaterialModule } from '../../shared/modules';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,5 +13,13 @@ import { AngularModule, MaterialModule } from '../../shared/modules';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+
+  rutas : Router = new Router();
+
+  logout(){
+
+    localStorage.clear();
+    this.rutas.navigate(['/login']);
+  }
 
 }
