@@ -5,10 +5,10 @@
     <h3>Buscador</h3>
     <div class="contenedor-inputs">
 
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Month and Year</mat-label>
         <input matInput [matDatepicker]="dp" formControlName="date">
-        <mat-hint>MM/YYYY</mat-hint>
+        <!-- <mat-hint>MM/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
           panelClass="example-month-picker">
