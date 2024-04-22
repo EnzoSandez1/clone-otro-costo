@@ -15,15 +15,15 @@
   </table>
 
 </div>
-<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 50]"
+  showFirstLastButtons></mat-paginator>
 
 <div class="opciones">
-    <select [(ngModel)]="pageSize" (change)="cambiarTamanioPagina()">
-        <option value="10">10 elementos por página</option>
-        <option value="20">20 elementos por página</option>
-        <option value="50">50 elementos por página</option>
-    </select>
-    <button >Cargar más</button>
-    <input type="text" placeholder="Buscar..." >
+  <select [(ngModel)]="pageSize" (change)="cambiarTamanioPagina()">
+    <option value="10">10 elementos por página</option>
+    <option value="20">20 elementos por página</option>
+    <option value="50">50 elementos por página</option>
+  </select>
+  <button>Cargar más</button>
+  <input type="text" placeholder="Buscar...">
 </div>
-

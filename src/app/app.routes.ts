@@ -9,7 +9,8 @@ export const routes: Routes = [
     path: 'login', loadChildren: () => import('./auth/login/login.component.routing').then(r => r.loginRouting),
   },
   {
-    path: 'home', loadChildren: () => import('./panel/home/home.component.routing').then(r => r.homeRouting),canActivate:[AuthGuard]
+    // path: 'home', loadChildren: () => import('./panel/home/home.component.routing').then(r => r.homeRouting),canActivate:[AuthGuard]
+    path: 'home', loadChildren: () => import('./panel/home/home.component.routing').then(r => r.homeRouting)
   },
   {
     path: 'cargas', loadChildren: () => import('./panel/cargas/cargas.component.routing').then(r => r.cargasRouting),
