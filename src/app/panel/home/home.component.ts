@@ -73,8 +73,9 @@ export class HomeComponent implements OnInit {
       console.log('Datos recibidos en HomeComponent:', this.dataRecibida);
       const cabecera = ['Cliente', 'Proyecto', `Periodo: ${data.date = ''}`, 'periodoAnterior', 'Estado'];
       // this.cargarCabecera = cabecera;
+      const convertdatatoArray = Object.values(data);
 
-      this.mappinData(data);
+      this.mappinData(convertdatatoArray);
     });
   }
 
@@ -89,6 +90,7 @@ export class HomeComponent implements OnInit {
         estado: item.estado
       };
     });
+    console.log(respdata);
     this._cdr.detectChanges();
   }
 
