@@ -4,16 +4,17 @@
     <h3>Buscador</h3>
     <div class="contenedor-inputs">
 
-      <mat-form-field class="input periodo">
-        <mat-label>Período</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-label>Month and Year</mat-label>
         <input matInput [matDatepicker]="dp" formControlName="date">
+        <!-- <mat-hint>MM/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
           panelClass="example-month-picker">
         </mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field class="input estado">
+      <mat-form-field appearance="outline">
         <mat-label>Estado</mat-label>
         <mat-select formControlName="estado">
           @for (estado of estados; track estado) {
@@ -22,7 +23,7 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="input cliente">
+      <mat-form-field appearance="outline">
         <mat-label>Cliente</mat-label>
         <mat-select formControlName="cliente">
           @for (cliente of clientes; track cliente) {
@@ -31,7 +32,7 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="input proyecto">
+      <mat-form-field appearance="outline">
         <mat-label>Proyecto</mat-label>
         <mat-select formControlName="proyecto">
           @for (proyecto of proyectos; track proyecto) {
@@ -41,23 +42,32 @@
       </mat-form-field>
     </div>
 
-
-    <div class="contenedor-btn">
-      <div class="btns">
-        <button class="restaurar" mat-button>Restaurar</button>
-
-
-            <button class="search-bar" (click)="actualizarFiltros()">
-              <span class="material-symbols-outlined">
-                search
-                </span>
-              buscar
-            </button>
-      </div>
-    </div>
-
   </div>
 </form>
 
+<pre>
+  {{buscadorForm.valid}}
+</pre>
+<div class="contenedor-btns">
 
+  <div class="btns">
+    <button class="restaurar" mat-button (click)="resetForm()">Restaurar</button>
 
+    @if (buscadorForm.valid) {
+
+    <div class="search-bar" (click)="validatedForm()">
+      <span class="material-symbols-outlined">
+        search
+      </span>
+      Buscar
+    </div>
+    } @else {
+    <div class="btn-invalid">
+      <span class="material-symbols-outlined">
+        search
+      </span>
+      Buscar
+    </div>
+  }
+  </div>
+</div>

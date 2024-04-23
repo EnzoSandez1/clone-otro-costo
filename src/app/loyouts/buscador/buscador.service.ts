@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
-export class buscadorService {
-  constructor() { }
+@Injectable({
+  providedIn: 'root'
+})
+export class BuscadorService {
 
-  private _filtro = new BehaviorSubject<{ estado?: string, cliente?: string, proyecto?: string ,formattedDate? : string } | null>({});
-  public filtro$ = this._filtro.asObservable();
-  private _fecha = new BehaviorSubject<string>('');
-  public fecha$ = this._fecha.asObservable();
+  private dataParaEnviar: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  setFiltro(filtro: { estado: string, cliente: string, proyecto: string ,formattedDate : string }) {
-    this._filtro.next(filtro);
+  setData(data: any): void {
+    this.dataParaEnviar.next(data);
   }
-  setFecha(fecha: string) {
-    this._fecha.next(fecha);
+
+  getData(): Observable<any> {
+    return this.dataParaEnviar.asObservable();
   }
+
 }
-
-
-

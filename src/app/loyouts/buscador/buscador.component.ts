@@ -4,15 +4,13 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { AngularModule, MaterialModule } from '../../shared/modules';
 import { DatePipe } from '@angular/common';
 
-
-
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS, DateAdapter, MAT_DATE_LOCALE, NativeDateAdapter } from '@angular/material/core';
 import 'moment/locale/es';
 import moment from 'moment';
 import { Moment, default as _rollupMoment } from 'moment';
+import { BuscadorService } from './buscador.service';
 
-import { buscadorService } from './buscador.service';
 
 export const formatMonthYear = {
   parse: {
@@ -61,8 +59,6 @@ interface proyecto {
 })
 export class BuscadorComponent implements OnInit {
 
-  private readonly _buscadorService = inject(buscadorService);
-
   estados: estado[] = [
     { value: 'pendiente-0', viewValue: 'Pendiente' },
     { value: 'cargado-1', viewValue: 'Cargado' },
@@ -92,69 +88,51 @@ export class BuscadorComponent implements OnInit {
     { value: 'proyecto 10', viewValue: 'ARG402002 2 Telecom SWF' },
   ];
 
-  searchQuery: string = '';
-
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
-  startAt: any;
 
   buscadorForm!: FormGroup;
-  selectedDate!: string;
-  fechaGuardar!: any;
-  fechaFormateada!: string;
+  private readonly _buscadorService = inject(BuscadorService);
+
   ngOnInit(): void {
     this.initIngresarForm();
   }
 
   initIngresarForm(): void {
     this.buscadorForm = new FormGroup({
-      date: new FormControl('', []),
-      estado: new FormControl('', []),
-      cliente: new FormControl('', []),
-      proyecto: new FormControl('', []),
-      formattedDate: new FormControl('', []),
-
+      date: new FormControl('', [Validators.required]),
+      estado: new FormControl('', [Validators.required]),
+      cliente: new FormControl('', [Validators.required]),
+      proyecto: new FormControl('', [Validators.required]),
     });
-  }
-
-  actualizarFiltros() {
-    this._buscadorService.setFiltro(this.buscadorForm.value);
-    console.log(this.buscadorForm.value);
-  }
-
-
-  formatDate(date: Date): string {
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Los meses empiezan en 0
-    const year = date.getFullYear();
-    return `${month}-${year}`;
-  }
-
-  updateDate(event: any): void {
-    console.log(event.value);
-    const selectedDate = event.value;
-    if (selectedDate) {
-
-      const formattedDate = this.formatDate(selectedDate);
-      this.buscadorForm.get('fechaDesde')?.setValue(formattedDate);
-    }
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
     const month = normalizedMonthAndYear.month();
     const year = normalizedMonthAndYear.year();
-    const date = moment().year(year).month(month); 
-    this.buscadorForm.get('date')?.setValue(date); 
+    const date = moment().year(year).month(month);
+    this.buscadorForm.get('date')?.setValue(date);
     datepicker.close();
-
   }
 
+  validatedForm(): void {
+    if (this.buscadorForm.valid) {
+      this.onSearch();
+    } else {
+      console.log('Formulario inválido');
+    }
+  }
 
   onSearch() {
-    this.search.emit(this.searchQuery);
+    const data = this.buscadorForm.value;
+    const fecha = data.date;
+    const formattedDate = moment(fecha).format('MM/YYYY');
+
+    const dataParaEnviar = { ...data, date: formattedDate };
+    this._buscadorService.setData(dataParaEnviar);
+  }
+
+  resetForm(): void {
+    this.buscadorForm.reset();
   }
 
 };
-
-
-
-
-
