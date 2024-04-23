@@ -4,10 +4,10 @@
 
 h3{
   font-family: Roboto;
-font-size: 18px;
-font-weight: 400;
-line-height: 21.09px;
-text-align: left;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.09px;
+  text-align: left;
 
 }
 
@@ -108,3 +108,42 @@ font-weight: 500;
 .example-month-picker .mat-calendar-arrow {
   display: none;
 }
+
+.contenedor-btn{
+  display: flex;
+  width: 100%;
+  justify-content: end;
+
+}
+
+.btns{
+  display: flex;
+    max-width: 600px;
+    margin: 8px 8px 8px 0;
+  align-items: center;
+
+}
+.btns restaurar{
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: rgb(204, 10, 45);
+  color: white;
+  width: 110px;
+  height: 40px;
+  border-radius: 4px;
+
+
+}
+
+.search-bar span{
+  color: white;
+}
+

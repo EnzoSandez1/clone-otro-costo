@@ -4,8 +4,8 @@
     <h3>Buscador</h3>
     <div class="contenedor-inputs">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Month and Year</mat-label>
+      <mat-form-field class="input periodo">
+        <mat-label>Período</mat-label>
         <input matInput [matDatepicker]="dp" formControlName="date">
         <!-- <mat-hint>MM/YYYY</mat-hint> -->
         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
@@ -42,18 +42,23 @@
       </mat-form-field>
     </div>
 
+
+    <div class="contenedor-btn">
+      <div class="btns">
+        <button class="restaurar" mat-button>Restaurar</button>
+
+
+            <button class="search-bar" (click)="actualizarFiltros()">
+              <span class="material-symbols-outlined">
+                search
+                </span>
+              buscar
+            </button>
+      </div>
+    </div>
+
   </div>
 </form>
 
-<div class="contenedor-btns">
 
-</div>
-<div class="btns">
-  <button class="restaurar" mat-button>Restaurar</button>
-  <div class="search-bar">
-    <span class="material-symbols-outlined">
-      search
-    </span>
-    <input type="text" placeholder="Buscar" [(ngModel)]="searchQuery" (input)="onSearch()">
-  </div>
-</div>
+

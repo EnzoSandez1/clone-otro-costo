@@ -1,0 +1,109 @@
+button {
+  // width: 100%;
+  height: auto;
+  max-height: 40px;
+  padding: .5rem 1rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all .4s ease;
+}
+
+
+.botones button {
+  width: 100% !important;
+  height: auto;
+  border-radius: .5rem !important;
+  transition: all .2s ease;
+  border: none;
+  padding: .5rem 1.5rem;
+}
+
+.btnValid {
+  background: var(--color-secondary);
+  color: #fefefe;
+}
+
+.btnValid:hover {
+  background: var(--color-primary);
+  transform: scale(1.01) translateY(-3px);
+}
+
+.btnInvalid {
+  background: #444;
+  color: #97959e;
+  cursor: none;
+}
+
+.btnInvalid:hover {
+  background: #111;
+  transform: scale(1.005) translateY(-1px);
+  color: #fefefe;
+  cursor: none;transition:all .2s ease;
+}
+
+.btnCancelar {
+  background: none;
+  border:1px solid var(--color-error);
+  color: #97959e;
+}
+
+.btnCancelar:hover {
+  background: var(--color-error);
+  transform: scale(1.005) translateY(-1px);
+  color: #fefefe;
+}
+
+// ========================
+.snackbarOk {
+  background-color: var(--color-secondary);
+  color: #fefefe;
+}
+
+.snackbar {
+  background-color: var(--color-primary);
+  color: #fefefe;
+}
+
+.btnSms {
+  background: var(--color-secondary);
+  color: #fefefe;
+  display: block;
+  text-align: center;
+  display: flex;
+  transition: all .2s ease;
+}
+
+.btnSms:hover {
+  background: var(--color-primary);
+  color: #fefefe;
+  transform: scale(1.01) translateY(-3px);
+}
+
+.loaderBtn {
+  padding-right: .5rem;
+}
+
+.loaderBtn mat-icon {
+  animation: rotateBtn 1s infinite linear;
+}
+
+@keyframes rotateBtn {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btnBuscar {
+  padding-top: .5rem;
+  padding-left: .5rem;
+  margin: 0;
+}
+
+@media only screen and (max-width:720px) {
+  .btnBuscar {
+    padding: 0 .5rem 1.5rem 0;
+    display: flex;
+    justify-content: end;
+  }
+}

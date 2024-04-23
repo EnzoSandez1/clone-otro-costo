@@ -25,7 +25,20 @@
     <p>Visualización de períodos:</p>
     <div class="tabla-periodos">
 
+      <table>
+        <tbody class="grid-tabla">
+          <tr *ngFor="let fecha of arrayFechas; let i = index" [class]="i < 7 ? 'fila-1' : 'fila-2'">
+            <td class="casilla">
+              {{ fecha }}
 
+
+
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
 
     </div>

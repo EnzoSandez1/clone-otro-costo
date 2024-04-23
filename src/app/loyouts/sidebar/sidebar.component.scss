@@ -56,24 +56,37 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 50px;
+  margin: 0px 25px 0px 25px;
 }
 
 .vinculos a, .btn-cerrar-sesion a{
   height: 49px;
-  top: 240px;
-  left: 20px;
+  // ! SAQUE TOP Y LEFT QUE SE SOLUCIONARON CON EL MARGIN
   gap: 0px;
   border: 1px 0px 0px 0px;
   opacity: 0px;
   text-decoration: none;
   text-decoration-line: none;
   text-decoration-color: inherit;
-  color: rgba(65, 65, 65, 1);
 
 }
 
+// ! AGREGUE ESTILOS A LOS a DE LOS VINCULOS
+.vinculos .vinculo {
+  width: 100%;
+  height: 49px;
+  background-color: transparent;
+  font-weight: 400;
+  padding: 5px;
+}
+
+.vinculo a span {
+  width: 35px;
+  height: 35px;
+}
+
 .vinculos a p, .btn-cerrar-sesion a p{
+  color: #414141;
   font-family: Roboto;
   font-size: 14px;
   font-weight: 300;
@@ -81,10 +94,26 @@
   text-align: left;
 }
 
-.btn-cerrar-sesion{
-  height: 108px;
+.vinculos .vinculo a:active,
+.vinculos .vinculo a:focus {
+  /* Estilos que deseas aplicar cuando se hace clic o se enfoca el enlace */
+  background-color: rgba(204, 10, 45, 0.05); /* Cambia el color de fondo */
+  border: #cc0a2d 1px solid; /* Cambia el color del borde */
+  border-radius: 6px;
+  color: #cc0a2d; /* Cambia el color del texto */
+  font-weight: 400;
 }
 
+.vinculos .vinculo a:active p,
+.vinculos .vinculo a:active span,
+.vinculos .vinculo a:focus p,
+.vinculos .vinculo a:focus span {
+  color: #cc0a2d;
+}
+.btn-cerrar-sesion{
+  height: 108px;
+  cursor: pointer;
+}
 
 .material-symbols-outlined {
   font-variation-settings:
@@ -103,12 +132,5 @@
 .icono, .btn-cerrar-sesion a{
   display: flex;
   align-items: center;
-
 }
-
-  .active {
-    border: 2px solid red;
-    color: red !important;
-}
-
 

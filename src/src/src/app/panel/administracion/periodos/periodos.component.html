@@ -1,0 +1,34 @@
+<div class="contenedor-periodos">
+  <div class="texto">
+    <h3>Períodos</h3>
+    <p>Seleccionar período:</p>
+  </div>
+  <div class="contenedor-selector-periodos">
+    <div class="selector-periodos">
+      <div class="contenedor-datepicker">
+        <mat-form-field class="datepicker">
+          <mat-label>Período</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="btns">
+        <button class="cerrar" mat-raised-button disabled>Cerrar</button>
+        <button class="abrir" mat-raised-button disabled>Abrir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="visualizacion">
+    <p>Visualización de períodos:</p>
+    <div class="tabla-periodos">
+
+
+
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="contenedor-conceptos">
+  <div class="edicion-conceptos">
+    <h3>Edición de conceptos</h3>
+    <button class="btn-crear" mat-flat-button color="warn"><span>+</span> Crear concepto</button>
+  </div>
+
+
+  <div class="selector-concepto">
+    <p>Seleccionar concepto:</p>
+
+    <div class="contenedor-selector">
+      <mat-form-field class="input">
+        <mat-label>Concepto</mat-label>
+        <mat-select>
+          @for (food of foods; track food) {
+            <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <div class="btn-selector-conceptos">
+        <button mat-stroked-button disabled>Eliminar</button>
+        <button mat-stroked-button disabled>Editar</button>
+      </div>
+    </div>
+
+  </div>
+</div>

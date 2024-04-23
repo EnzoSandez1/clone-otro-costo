@@ -1,0 +1,90 @@
+<div class="login">
+  <div class="childLogin p-4 Center">
+    <div>
+      <div class="texto">
+        <p>¡Hola!</p>
+        <p><samp>Te damos la bienvenida</samp></p>
+      </div>
+
+    </div>
+
+    <form [formGroup]="ingresarForm" class="fadeIn">
+      <div class="mt-5"></div>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="userName" placeholder="Usuario">
+
+        <mat-error
+          *ngIf="ingresarForm.get('userName')?.errors && ingresarForm.get('userName')?.invalid && (ingresarForm.get('userName')?.dirty || ingresarForm.get('userName')?.touched)">
+          <span *ngIf="ingresarForm.get('userName')?.errors?.['required']">El usuario es obligatorio</span>
+          <span *ngIf="ingresarForm.get('userName')?.errors?.['maxlength']">El usuario no puede tener más de 20 caracteres</span>
+          <span *ngIf="ingresarForm.get('userName')?.errors?.['caracteresEspeciales']">El usuario solo puede contener letras</span>
+        </mat-error>
+
+
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <div class="dflex">
+          <input [type]="obtenerTipoInput()" matInput formControlName="password" placeholder="Contraseña">
+          <span class="material-symbolsd" (click)="alternarVisibilidad()">
+            <mat-icon>{{ mostrarPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </span>
+        </div>
+        <mat-error
+          *ngIf="ingresarForm.get('password')?.errors && ingresarForm.get('password')?.invalid && (ingresarForm.get('password')?.dirty || ingresarForm.get('password')?.touched)">
+          <span *ngIf="ingresarForm.get('password')?.errors?.['required']">La contraseña es obligatoria</span>
+          <span *ngIf="ingresarForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6
+            caracteres</span>
+          <span *ngIf="ingresarForm.get('password')?.errors?.['maxlength']">La contraseña no puede tener más de 20
+            caracteres</span>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+
+    @if(ingresarForm.valid){
+    <div>
+      <div class="botones">
+        <button mat-button type="submit" class="mat-button-block" (click)="validarForm()" #boton >
+          @if (loaderBtn === true){
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Cargando...
+          }
+
+          @else{
+          Ingresar
+
+
+          }
+        </button>
+
+      </div>
+
+      <!-- @if (loaderBtn === true) {
+        <button mat-button class="mat-button-block" type="button" disabled >
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Cargando...
+        </button>
+        }@else{
+        <button mat-button class="mat-button-block" (click)="validarForm()">Ingresar ++++++++++++++</button>
+        }
+      -->
+    </div>
+    }@else {
+    <!---  @if(==false){
+          <div class="botongris">
+            <button mat-button type="submit" class="mat-button-block" (click)="noValidoForm()">Ingresar</button>
+          </div>
+
+        }-->
+    <div class="botongris">
+      <button mat-button type="disabled" class="mat-button-block" (click)="noValidoForm()">Ingresar </button>
+    </div>
+
+    }
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.contenedor-conceptos{
+  height: 184px;
+  top: 132px;
+  left: 236px;
+  gap: 0px;
+  border-radius: 4px;
+  opacity: 0px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  display: block;
+
+}
+
+
+.mat-mdc-unelevated-button.mat-warn{
+  background-color: rgba(204, 10, 45, 1);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+}
+
+.edicion-conceptos{
+  display: flex;
+  justify-content: space-between;
+}
+.contenedor-selector{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.contenedor-selector{
+  width: 35%;
+}
+
+.mat-mdc-form-field{
+  min-width: 270px;
+}
+
+
+.mat-mdc-form-field-focus-overlay{
+  width: 270px;
+  gap: 8px;
+  border-radius: 4px ;
+  opacity: 0px;
+
+}
+
+.btn-selector-conceptos{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 25px;
+}

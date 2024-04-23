@@ -1,0 +1,92 @@
+*{
+  box-sizing: border-box;
+}
+
+h3{
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18.75px;
+  text-align: left;
+  color:rgba(0, 0, 0, 1);
+
+}
+
+.contenedor-periodos{
+  height: 323px;
+  top: 132px;
+  left: 236px;
+  gap: 0px;
+  border-radius: 4px;
+  opacity: 0px;
+  background-color: #fff;
+  margin: 20px;
+  padding: 20px;
+  display: block;
+  align-items: center;
+
+
+}
+
+.datepicker{
+  width: 191px;
+  top: 235.67px;
+  left: 260px;
+  gap: 0px;
+  border-radius: 4px 4px 0px 0px;
+  opacity: 0px;
+
+}
+
+.mat-mdc-form-field-bottom-align{
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-selector-periodos{
+  width: 365px;
+
+}
+
+.selector-periodos{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.btns{
+  margin-bottom: 25px;
+  height: 39.87px;
+  top: 243.65px;
+  left: 467px;
+  gap: 8px;
+  opacity: 0px;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.btns .cerrar{
+  width:71px;
+  height:40px;
+  padding: 0px 16px 0px 16px;
+  gap: 10px;
+  border-radius: 4px;
+  opacity: 0px;
+  background-color: rgba(217, 217, 217, 1);
+  border: none;
+
+}
+
+.btns .abrir{
+  width: 63px;
+  height: 40px;
+  padding: 0px 16px 0px 16px;
+  gap: 10px;
+  border-radius: 4px;
+  opacity: 0px;
+  background-color: rgba(217, 217, 217, 1);
+  border: none;
+
+}
