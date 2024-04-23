@@ -88,8 +88,6 @@ export class BuscadorComponent implements OnInit {
     { value: 'proyecto 10', viewValue: 'ARG402002 2 Telecom SWF' },
   ];
 
-  @Output() search: EventEmitter<string> = new EventEmitter<string>();
-
   buscadorForm!: FormGroup;
   private readonly _buscadorService = inject(BuscadorService);
 
