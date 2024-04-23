@@ -127,6 +127,10 @@ export class BuscadorComponent implements OnInit {
 
     const dataParaEnviar = { ...data, date: formattedDate };
     this._buscadorService.setData(dataParaEnviar);
+
+    // TODO: puede que sea necesario hacer un reset del formulario
+    // por ende se descomenta la siguiente línea
+    // this.resetForm();
   }
 
   resetForm(): void {
